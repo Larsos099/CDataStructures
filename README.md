@@ -22,7 +22,7 @@ Future updates aim to include:
 ---
 
 ## How to Use CDataStructures
-All examples are provided in the `examples/` folder. [(Here)](./examples/)
+All examples are provided in the [`examples/`](./examples/) folder.
 
 For instance, if you want to use a Doubly Linked List:
 
