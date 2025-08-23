@@ -323,6 +323,130 @@ static inline void sl_delete_by_value(Node **rootPtrPtr, void *val,
 }
 
 /**
+ * @brief Inserts a node at a specific index using move semantics.
+ * @param rootPtrPtr Pointer to the root node pointer.
+ * @param toBeInsertedPtrPtr Pointer to node pointer (ownership transferred).
+ * @param idx Index to insert at.
+ */
+static inline void sl_insert_at_index_mv_node(Node **rootPtrPtr,
+                                              Node **toBeInsertedPtrPtr,
+                                              int idx) {
+  if (!rootPtrPtr || !toBeInsertedPtrPtr || !*toBeInsertedPtrPtr || idx < 0)
+    return;
+
+  Node *newNode = (Node *)move((void **)toBeInsertedPtrPtr);
+
+  if (idx == 0) {
+    newNode->next = *rootPtrPtr;
+    *rootPtrPtr = newNode;
+    return;
+  }
+
+  Node *current = *rootPtrPtr;
+  int i = 0;
+  while (current != NULL && i < idx - 1) {
+    current = current->next;
+    i++;
+  }
+  if (!current) {
+    // index out of bounds
+    free(newNode->data);
+    free(newNode);
+    return;
+  }
+  newNode->next = current->next;
+  current->next = newNode;
+}
+
+/**
+ * @brief Inserts a node at a specific index using shallow copy.
+ */
+static inline void sl_insert_at_index_cp_node(Node **rootPtrPtr,
+                                              Node *toBeInserted, int idx) {
+  if (!rootPtrPtr || !toBeInserted || idx < 0)
+    return;
+
+  if (idx == 0) {
+    toBeInserted->next = *rootPtrPtr;
+    *rootPtrPtr = toBeInserted;
+    return;
+  }
+
+  Node *current = *rootPtrPtr;
+  int i = 0;
+  while (current != NULL && i < idx - 1) {
+    current = current->next;
+    i++;
+  }
+  if (!current)
+    return;
+
+  toBeInserted->next = current->next;
+  current->next = toBeInserted;
+}
+
+/**
+ * @brief Inserts a node at a specific index using deep copy.
+ */
+static inline void sl_insert_at_index_deep_cp_node(Node **rootPtrPtr,
+                                                   Node *toBeCopied, int idx) {
+  if (!rootPtrPtr || !toBeCopied || idx < 0)
+    return;
+
+  Node *newNode =
+      sl_create_node_deep_cp(toBeCopied->data, toBeCopied->dataLen, NULL);
+
+  if (idx == 0) {
+    newNode->next = *rootPtrPtr;
+    *rootPtrPtr = newNode;
+    return;
+  }
+
+  Node *current = *rootPtrPtr;
+  int i = 0;
+  while (current != NULL && i < idx - 1) {
+    current = current->next;
+    i++;
+  }
+  if (!current) {
+    free(newNode->data);
+    free(newNode);
+    return;
+  }
+
+  newNode->next = current->next;
+  current->next = newNode;
+}
+
+/**
+ * @brief Inserts data at a specific index using move semantics.
+ */
+static inline void sl_insert_at_index_mv_data(Node **rootPtrPtr, void **data,
+                                              size_t dataLen, int idx) {
+  Node *node = sl_create_node_mv(data, dataLen, NULL);
+  sl_insert_at_index_mv_node(rootPtrPtr, &node, idx);
+}
+
+/**
+ * @brief Inserts data at a specific index using shallow copy.
+ */
+static inline void sl_insert_at_index_cp_data(Node **rootPtrPtr, void *data,
+                                              size_t dataLen, int idx) {
+  Node *node = sl_create_node_cp(data, dataLen, NULL);
+  sl_insert_at_index_cp_node(rootPtrPtr, node, idx);
+}
+
+/**
+ * @brief Inserts data at a specific index using deep copy.
+ */
+static inline void sl_insert_at_index_deep_cp_data(Node **rootPtrPtr, void *data,
+                                                   size_t dataLen, int idx) {
+  Node *node = sl_create_node_deep_cp(data, dataLen, NULL);
+  sl_insert_at_index_deep_cp_node(rootPtrPtr, node, idx);
+}
+
+
+/**
  * @brief Frees all nodes in the list.
  * @param rootPtrPtr Pointer to the root node pointer.
  */

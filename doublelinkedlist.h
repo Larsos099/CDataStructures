@@ -1,6 +1,7 @@
 #ifndef DOUBLELINKEDLIST_H
 #define DOUBLELINKEDLIST_H
 
+#include <cstddef>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -43,6 +44,40 @@ static inline DLNode *dl_iterate_to_last_node(DLNode **root) {
   while (current->next != NULL) {
     current = current->next;
   }
+  return current;
+}
+
+/**
+ * @brief Returns the first node that matches the given content EXACTLY.
+ * @param root Pointer to the root node of the list.
+ * @param data void* for the data to match.
+ * @return Pointer to the first node that contains matching data
+ * @note root must not be NULL.
+ * @note If none is found, returns NULL.
+ */
+static inline DLNode *dl_iterate_to_matching(DLNode **root, void *data) {
+  if (*root == NULL || data == NULL)
+    return NULL;
+  DLNode *current = *root;
+  bool found = false;
+  while (current->next != NULL && !found) {
+    current = current->next;
+    found = (memcmp(current->data, data, current->dataSize) != 0);
+  }
+  if (!found)
+    return NULL;
+  return current;
+}
+
+static inline DLNode *dl_iterate_to_index(DLNode **root, int idx) {
+  DLNode *current = *root;
+  int i = 0;
+  while (current->next && i < idx) {
+    current = current->next;
+    i++;
+  }
+  if (i < idx)
+    return NULL;
   return current;
 }
 
@@ -368,6 +403,154 @@ static inline DLNode *dl_get_by_index(DLNode *root, size_t index) {
   }
   return current; // NULL if out of bounds
 }
+
+
+/**
+ * @brief Inserts a node at the specified index using move semantics.
+ * @param root Pointer to the root node of the list.
+ * @param toBeInserted Pointer to the node pointer to be moved (ownership transferred).
+ * @param idx Zero-based index where the node should be inserted.
+ * @note If idx is out of bounds, the function does nothing.
+ */
+
+static inline void dl_insert_at_index_mv_node(DLNode **root, DLNode **toBeInserted,
+                                           int idx) {
+  if (!root || !*root || !toBeInserted || !*toBeInserted)
+    return;
+
+  DLNode *nati = dl_iterate_to_index(root, idx);
+  if (!nati)
+    return;
+
+  DLNode *newNode = (DLNode *)move((void **)toBeInserted);
+
+  if (nati->previous == NULL) {
+    newNode->previous = NULL;
+    newNode->next = nati;
+    nati->previous = newNode;
+    *root = newNode;
+    return;
+  }
+
+  newNode->previous = nati->previous;
+  newNode->next = nati;
+  nati->previous->next = newNode;
+  nati->previous = newNode;
+}
+
+
+/**
+ * @brief Inserts a node at the specified index using shallow copy.
+ * @param root Pointer to the root node of the list.
+ * @param toBeInserted Pointer to the node (not copied).
+ * @param idx Zero-based index where the node should be inserted.
+ * @note Node is not copied; caller is responsible for data lifetime.
+ * @note If idx is out of bounds, the function does nothing.
+ */
+
+
+static inline void dl_insert_at_index_cp_node(DLNode **root,
+                                              DLNode *toBeInserted, int idx) {
+  if (!root || !*root || !toBeInserted)
+    return;
+
+  DLNode *nati = dl_iterate_to_index(root, idx);
+  if (!nati)
+    return;
+
+  if (nati->previous == NULL) {
+    toBeInserted->previous = NULL;
+    toBeInserted->next = nati;
+    nati->previous = toBeInserted;
+    *root = toBeInserted;
+    return;
+  }
+
+  toBeInserted->previous = nati->previous;
+  toBeInserted->next = nati;
+  nati->previous->next = toBeInserted;
+  nati->previous = toBeInserted;
+}
+
+
+/**
+ * @brief Inserts a node at the specified index using deep copy of its data.
+ * @param root Pointer to the root node of the list.
+ * @param toBeCopied Node whose data should be copied.
+ * @param idx Zero-based index where the node should be inserted.
+ * @note If idx is out of bounds, the function does nothing.
+ */
+
+static inline void
+dl_insert_at_index_deep_cp_node(DLNode **root, DLNode *toBeCopied, int idx) {
+  if (!root || !*root || !toBeCopied)
+    return;
+
+  DLNode *nati = dl_iterate_to_index(root, idx);
+  if (!nati)
+    return;
+
+  DLNode *newNode = dl_create_node_deep_cp(toBeCopied->data,
+                                           toBeCopied->dataSize, NULL, NULL);
+
+  if (nati->previous == NULL) {
+    newNode->previous = NULL;
+    newNode->next = nati;
+    nati->previous = newNode;
+    *root = newNode;
+    return;
+  }
+
+  newNode->previous = nati->previous;
+  newNode->next = nati;
+  nati->previous->next = newNode;
+  nati->previous = newNode;
+}
+
+/**
+ * @brief Inserts new data at the specified index (move semantics).
+ * @param root Pointer to the root node of the list.
+ * @param data Pointer to the pointer of data (ownership transferred).
+ * @param dataSize Size of the data in bytes.
+ * @param idx Zero-based index where the data should be inserted.
+ */
+
+static inline void dl_insert_at_index_mv_data(DLNode** root, void** data, size_t dataSize, int idx) {
+  DLNode* node = dl_create_node_mv(data, dataSize, NULL, NULL);
+  dl_insert_at_index_mv_node(root, &node, idx);
+}
+
+/**
+ * @brief Inserts new data at the specified index (shallow copy).
+ * @param root Pointer to the root node of the list.
+ * @param data Pointer to the data (not copied).
+ * @param dataSize Size of the data in bytes.
+ * @param idx Zero-based index where the data should be inserted.
+ * @note Data is not copied; caller is responsible for data lifetime.
+ */
+
+static inline void dl_insert_at_index_cp_data(DLNode** root, void* data, size_t dataSize, int idx) {
+  dl_insert_at_index_cp_node(root, dl_create_node_cp(data, dataSize, NULL, NULL), idx);
+}
+
+/**
+ * @brief Inserts new data at the specified index (deep copy).
+ * @param root Pointer to the root node of the list.
+ * @param data Pointer to the data to copy.
+ * @param dataSize Size of the data in bytes.
+ * @param idx Zero-based index where the data should be inserted.
+ */
+
+static inline void dl_insert_at_index_deep_cp_data(DLNode** root, void* data, size_t dataSize, int idx) {
+  dl_insert_at_index_deep_cp_node(root, dl_create_node_deep_cp(data, dataSize, NULL, NULL), idx);
+}
+
+/**
+ * @brief Frees the entire doubly linked list.
+ * @param root Pointer to the root node of the list.
+ * @note Frees all nodes and their data, then sets *root to NULL.
+ */
+
 static inline void dl_free_list(DLNode **root) {
   if (!root || !*root)
     return;
