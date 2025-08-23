@@ -23,11 +23,12 @@ static inline Node* cl_create_node_deep_cp(void* data, size_t dataSize, Node* ne
     return newNode;
 }
 
-static inline Node** cl_create_node_mv(void** data, size_t dataSize, Node* next) {
+static inline Node* cl_create_node_mv(void** data, size_t dataSize, Node* next) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = move(data);
     newNode->dataLen = dataSize;
     newNode->next = next;
+    return newNode;
 }
 
 #endif // CIRCULARLINKEDLIST_H
