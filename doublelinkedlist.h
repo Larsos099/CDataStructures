@@ -1,15 +1,12 @@
 #ifndef DOUBLELINKEDLIST_H
 #define DOUBLELINKEDLIST_H
 
-#include <stddef.h>
+#include "generics.h"
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "generics.h"
-
-
 
 /**
  * @brief Returns the last node of the list.
