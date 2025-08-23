@@ -225,6 +225,17 @@ static inline void sl_push_front_cp_node(Node **rootPtrPtr, Node *nodePtr) {
 static inline void sl_push_front_cp_data(Node **rootPtrPtr, void *data,
                                          size_t dataLen) {
   Node *nNode = (Node *)malloc(sizeof(Node));
+  nNode->data = data;
+  nNode->dataLen = dataLen;
+  sl_push_front_cp_node(rootPtrPtr, nNode);
+}
+
+/**
+ * @brief Prepends data to the start of the list using deep copy.
+ */
+static inline void sl_push_front_cp_data_deep(Node **rootPtrPtr, void *data,
+                                         size_t dataLen) {
+  Node *nNode = (Node *)malloc(sizeof(Node));
   nNode->data = malloc(dataLen);
   memmove(nNode->data, data, dataLen);
   nNode->dataLen = dataLen;
