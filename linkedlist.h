@@ -235,9 +235,10 @@ static inline void *sl_get_at_index(Node *rootPtr, int idx) {
  * @param _val Pointer to the value to search for.
  * @return Pointer to node or NULL if value not found.
  */
-static inline Node *sl_get_by_value(Node *rootPtr, void *_val) {
+static inline Node *sl_get_by_value(Node *rootPtr, void *_val, size_t valSize) {
   Node *c = rootPtr;
   while (c != NULL) {
+    if(c->dataLen != valSize) c = c->next;
     if (memcmp(_val, c->data, c->dataLen) == 0)
       return c;
     c = c->next;

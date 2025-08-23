@@ -1,7 +1,7 @@
 #ifndef GENERICS_H
 #define GENERICS_H
 
-#include <cstddef>
+#include <stddef.h>
 
 /**
  * @struct Node
@@ -42,6 +42,5 @@ typedef struct DLNode {
   struct DLNode *next;
   struct DLNode *previous;
 } DLNode;
-
 
 #endif // GENERICS_H
