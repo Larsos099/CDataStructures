@@ -160,6 +160,21 @@ static inline void sl_push_back_cp_data(Node **rootPtrPtr, void *data,
                                         size_t dataLen) {
   Node *nNode = (Node *)malloc(sizeof(Node));
   nNode->dataLen = dataLen;
+  nNode->data = data;
+  nNode->next = NULL;
+  sl_push_back_cp_node(rootPtrPtr, nNode);
+}
+
+/**
+ * @brief Appends data to the end of the list using deep copy.
+ * @param rootPtrPtr Pointer to the root node pointer.
+ * @param data Pointer to data to copy.
+ * @param dataLen Size of the data.
+ */
+static inline void sl_push_back_cp_data_deep(Node **rootPtrPtr, void *data,
+                                        size_t dataLen) {
+  Node *nNode = (Node *)malloc(sizeof(Node));
+  nNode->dataLen = dataLen;
   nNode->data = malloc(dataLen);
   memmove(nNode->data, data, dataLen);
   nNode->next = NULL;
