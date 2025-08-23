@@ -7,9 +7,9 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-static inline Node *cl_iterate_to_last_node(Node **root) {
-  Node *current = *root;
-  while (current->next != *root) {
+static inline Node *cl_iterate_to_last_node(Node *root) {
+  Node *current = root;
+  while (current->next != root) {
     current = current->next;
   }
   return current;
@@ -50,7 +50,7 @@ static inline void cl_push_front_mv_node(Node **root, Node **toBePushed) {
     *root = (Node *)move((void **)toBePushed);
     return;
   }
-  Node *last = cl_iterate_to_last_node(root);
+  Node *last = cl_iterate_to_last_node(*root);
   (*toBePushed)->next = *root;
   last->next = *toBePushed;
   *root = (Node *)move((void **)toBePushed);
@@ -64,7 +64,7 @@ static inline void cl_push_front_cp_node(Node **root, Node *toBePushed) {
     *root = toBePushed;
     return;
   }
-  Node *last = cl_iterate_to_last_node(root);
+  Node *last = cl_iterate_to_last_node(*root);
   toBePushed->next = *root;
   last->next = toBePushed;
   *root = toBePushed;
@@ -81,7 +81,7 @@ static inline void cl_push_front_deep_cp_node(Node **root, Node *toBePushed) {
     *root = newNode;
     return;
   }
-  Node *last = cl_iterate_to_last_node(root);
+  Node *last = cl_iterate_to_last_node(*root);
   toBePushed->next = *root;
   last->next = toBePushed;
   *root = toBePushed;
@@ -101,6 +101,67 @@ static inline void cl_push_front_cp_data(Node **root, void *data,
 static inline void cl_push_front_deep_cp_data(Node **root, void *data,
                                               size_t dataSize) {
   cl_push_front_deep_cp_node(root,
+                             cl_create_node_deep_cp(data, dataSize, NULL));
+}
+
+static inline void cl_push_back_mv_node(Node *root, Node **toBePushed) {
+  if (!(*toBePushed))
+    return;
+  if (root) {
+    (*toBePushed)->next = root;
+    root->next = *toBePushed;
+    return;
+  }
+
+  Node *last = cl_iterate_to_last_node(root);
+  last->next = (Node *)move((void **)toBePushed);
+  (*toBePushed)->next = root;
+}
+
+static inline void cl_push_back_cp_node(Node *root, Node *toBePushed) {
+  if (!toBePushed)
+    return;
+  if (root) {
+    toBePushed->next = root;
+    root->next = toBePushed;
+    return;
+  }
+  Node *last = cl_iterate_to_last_node(root);
+  toBePushed->next = root;
+  last->next = toBePushed;
+}
+
+static inline void cl_push_back_deep_cp_node(Node *root, Node *toBePushed) {
+  if (!toBePushed)
+    return;
+  Node *newNode = (Node *)malloc(sizeof(Node));
+  newNode->data = malloc(sizeof(toBePushed->dataLen));
+  memmove(newNode->data, toBePushed->data, toBePushed->dataLen);
+  newNode->dataLen = toBePushed->dataLen;
+  if (root) {
+    toBePushed->next = root;
+    root->next = toBePushed;
+    return;
+  }
+  Node *last = cl_iterate_to_last_node(root);
+  toBePushed->next = root;
+  last->next = toBePushed;
+}
+
+static inline void cl_push_back_mv_data(Node *root, void **data,
+                                         size_t dataSize) {
+  Node *newNode = cl_create_node_mv(data, dataSize, NULL);
+  cl_push_back_mv_node(root, &newNode);
+}
+
+static inline void cl_push_back_cp_data(Node *root, void *data,
+                                         size_t dataSize) {
+  cl_push_back_cp_node(root, cl_create_node_cp(data, dataSize, NULL));
+}
+
+static inline void cl_push_back_deep_cp_data(Node *root, void *data,
+                                              size_t dataSize) {
+  cl_push_back_deep_cp_node(root,
                              cl_create_node_deep_cp(data, dataSize, NULL));
 }
 
