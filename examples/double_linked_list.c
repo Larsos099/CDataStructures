@@ -57,14 +57,16 @@ int main(void) {
   dl_push_front_deep_cp_data(&root, pf_e, strlen(pf_e) + 1);
   free(pf_e);
   print(root);
-  char* insertedStr = strdup("Inserted");
+  char *insertedStr = strdup("Inserted");
   size_t insertedSize = strlen(insertedStr) + 1;
-  dl_insert_at_index_mv_data(&root, (void**)&insertedStr, insertedSize, 1);
+  dl_insert_at_index_mv_data(&root, (void **)&insertedStr, insertedSize, 1);
   print(root);
-  printf("Both pA and insertedStr should be NULL now since we used mv on them:\npA: %s insertedStr: %s\n", (char*)pA, insertedStr);
+  printf("Both pA and insertedStr should be NULL now since we used mv on "
+         "them:\npA: %s insertedStr: %s\n",
+         (char *)pA, insertedStr);
   dl_delete_by_value(&root, rootStr, strlen(rootStr) + 1);
   print(root);
   dl_free_list(&root);
-  printf("root node should now be NULL\n%s\n", (char*)root);
+  printf("root node should now be NULL\n%s\n", (char *)root);
   return 0;
 }

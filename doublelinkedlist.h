@@ -7,31 +7,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-/**
- * @struct DLNode
- * @brief Node for a doubly linked list.
- * @var data Pointer to stored data.
- * @var dataSize Size of the data in bytes.
- * @var next Pointer to the next node.
- * @var previous Pointer to the previous node.
- */
-typedef struct DLNode {
-  void *data;
-  size_t dataSize;
-  struct DLNode *next;
-  struct DLNode *previous;
-} DLNode;
+#include "generics.h"
 
-/**
- * @brief Moves a pointer and sets the old pointer to NULL.
- * @param old Pointer to the old pointer.
- * @return The moved pointer.
- */
-static inline void *move(void **old) {
-  void *newPtr = *old;
-  *old = NULL;
-  return newPtr;
-}
+
 
 /**
  * @brief Returns the last node of the list.
