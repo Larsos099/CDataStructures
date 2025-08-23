@@ -10,13 +10,13 @@ Currently, CDataStructures implements:
 
 - **Singly Linked List** (`sl_*`)
 - **Doubly Linked List** (`dl_*`)
+- **Circularly Linked List** (`cl_*`)
 
 ---
 
 ## Planned Data Structures
 Future updates aim to include:
 
-- Circular Linked List
 - All variants of Queues (e.g., FIFO, Priority Queue, Circular Queue)
 
 ---
