@@ -91,8 +91,6 @@ int main(void) {
   Node *nodeByIndex = sl_get_by_index(root, 5);
   printf("Data at index 5: %s\n", (char *)nodeByIndex->data); // prints "Fourth"
 
-  print_list(root);
-
   printf("---------------\n");
   printf("Delete data\n");
   printf("---------------\n");
@@ -107,16 +105,16 @@ int main(void) {
   printf("---------------\n");
 
   dataFo = strdup("Fourth");
-  Node *nodeToInsert = sl_create_node_deep_cp(dataFo, 7, root);
+  Node *nodeToInsert = sl_create_node_deep_cp(dataFo, 7, NULL);
   sl_insert_at_index_mv_node(&root, &nodeToInsert, 4);
   dataFi = strdup("Fifth");
-  nodeToInsert = sl_create_node_deep_cp(dataFi, 6, root);
+  nodeToInsert = sl_create_node_deep_cp(dataFi, 6, NULL);
   sl_insert_at_index_mv_node(&root, &nodeToInsert, 4);
   dataFi = strdup("Fifth.1");
-  nodeToInsert = sl_create_node_deep_cp(dataFi, 8, root);
+  nodeToInsert = sl_create_node_deep_cp(dataFi, 8, NULL);
   sl_insert_at_index_cp_node(&root, nodeToInsert, 4);
   dataFi = strdup("Fifth.2");
-  nodeToInsert = sl_create_node_deep_cp(dataFi, 8, root);
+  nodeToInsert = sl_create_node_deep_cp(dataFi, 8, NULL);
   sl_insert_at_index_deep_cp_node(&root, nodeToInsert, 4);
   free(nodeToInsert->data);
   free(nodeToInsert);

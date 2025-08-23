@@ -70,7 +70,13 @@ static inline DLNode *dl_create_node_mv(void **data, size_t dataSize,
   newNode->dataSize = dataSize;
   newNode->data = move(data);
   newNode->next = next;
+  if (next) {
+    next->previous = newNode;
+  }
   newNode->previous = previous;
+  if (previous) {
+    previous->next = newNode;
+  }
   return newNode;
 }
 
@@ -89,7 +95,13 @@ static inline DLNode *dl_create_node_cp(void *data, size_t dataSize,
   newNode->dataSize = dataSize;
   newNode->data = data;
   newNode->next = next;
+  if (next) {
+    next->previous = newNode;
+  }
   newNode->previous = previous;
+  if (previous) {
+    previous->next = newNode;
+  }
   return newNode;
 }
 
@@ -108,10 +120,17 @@ static inline DLNode *dl_create_node_deep_cp(void *data, size_t dataSize,
   if (data != NULL && dataSize > 0) {
     newNode->data = malloc(dataSize);
     memmove(newNode->data, data, dataSize);
-  } else
+  } else {
     newNode->data = NULL;
+  }
   newNode->next = next;
+  if (next) {
+    next->previous = newNode;
+  }
   newNode->previous = previous;
+  if (previous) {
+    previous->next = newNode;
+  }
   return newNode;
 }
 
@@ -167,6 +186,14 @@ static inline void dl_push_back_deep_cp_node(DLNode **root, DLNode *newNode) {
 static inline void dl_push_back_cp_data(DLNode **root, void *data,
                                         size_t dataSize) {
   dl_push_back_cp_node(root, dl_create_node_cp(data, dataSize, NULL, NULL));
+}
+
+/**
+ * @brief Appends data at the end of the list (shallow copy).
+ */
+static inline void dl_push_back_cp_data_deep(DLNode **root, void *data,
+                                        size_t dataSize) {
+  dl_push_back_cp_node(root, dl_create_node_deep_cp(data, dataSize, NULL, NULL));
 }
 
 /**
@@ -241,6 +268,13 @@ static inline void dl_push_front_mv_node(DLNode **root, DLNode **newNode) {
 static inline void dl_push_front_cp_data(DLNode **root, void *data,
                                          size_t dataSize) {
   dl_push_front_cp_node(root, dl_create_node_cp(data, dataSize, NULL, NULL));
+}
+/**
+ * @brief Prepends data at the beginning of the list (shallow copy).
+ */
+static inline void dl_push_front_cp_data_deep(DLNode **root, void *data,
+                                         size_t dataSize) {
+  dl_push_front_cp_node(root, dl_create_node_deep_cp(data, dataSize, NULL, NULL));
 }
 
 /**
@@ -342,6 +376,26 @@ static inline bool dl_contains(DLNode *root, void *data, size_t dataSize) {
     current = current->next;
   }
   return false;
+}
+
+/**
+ * @brief Returns the data at the specified index.
+ * @param rootPtr Root node pointer.
+ * @param idx Index to retrieve.
+ * @return Pointer to data or NULL if out of bounds.
+ */
+static inline void *dl_get_at_index(DLNode *rootPtr, int idx) {
+  DLNode *c = rootPtr;
+  int i = 0;
+  while (c->next != NULL && i < idx) {
+    c = c->next;
+    i++;
+  }
+  if (i < idx) {
+    fprintf(stderr, "Error: Index out of bounds.\n");
+    return NULL;
+  }
+  return c->data;
 }
 
 /**
