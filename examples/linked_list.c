@@ -1,11 +1,11 @@
 #include "linkedlist.h"
 
 static inline void print_list(Node *root) {
-  Node *tmp = root;
-  while (tmp != NULL) {
-    printf("%s\n", (char *)tmp->data);
-    tmp = tmp->next;
-  }
+    Node *tmp = root;
+    while (tmp != NULL) {
+        printf("%s\n", (char *)tmp->data);
+        tmp = tmp->next;
+    }
 }
 
 int main(void) {
@@ -68,5 +68,14 @@ int main(void) {
 
     print_list(root);
 
-  print_list(root);
+    char *data = sl_get_at_index(root, 5);
+    printf("Data at index 5: %s\n", data); // prints "Fourth"
+
+    Node *nodeByValue = sl_get_by_value(root, "Second", 7);
+    printf("Data from node: %s\n", (char *)nodeByValue->data); // prints "Second"
+    printf("Data from node->next: %s\n", (char *)nodeByValue->next->data); // prints "First"
+
+
+    Node *nodeByIndex = sl_get_by_index(root, 5);
+    printf("Data at index 5: %s\n", (char *)nodeByIndex->data); // prints "Fourth"
 }

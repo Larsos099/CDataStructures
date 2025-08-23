@@ -1,8 +1,6 @@
 #ifndef GENERICS_H
 #define GENERICS_H
 
-#include <cstddef>
-
 /**
  * @struct Node
  * @brief Node structure for a singly linked list.
