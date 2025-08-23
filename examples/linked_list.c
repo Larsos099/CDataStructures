@@ -1,11 +1,11 @@
 #include "linkedlist.h"
 
 static inline void print_list(Node *root) {
-    Node *tmp = root;
-    while (tmp != NULL) {
-        printf("%s\n", (char *)tmp->data);
-        tmp = tmp->next;
-    }
+  Node *tmp = root;
+  while (tmp != NULL) {
+    printf("%s\n", (char *)tmp->data);
+    tmp = tmp->next;
+  }
 }
 
 int main(void) {
@@ -64,4 +64,5 @@ int main(void) {
 
     print_list(root);
 
+  print_list(root);
 }

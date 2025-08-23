@@ -4,31 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "generics.h"
 
-/**
- * @struct Node
- * @brief Node structure for a singly linked list.
- * @var data Pointer to the stored data.
- * @var dataLen Size of the data in bytes.
- * @var next Pointer to the next node.
- */
-typedef struct Node {
-  void *data;
-  size_t dataLen;
-  struct Node *next;
-} Node;
 
-/**
- * @brief Moves a pointer and sets the old pointer to NULL (simulates std::move
- * in C++).
- * @param old Pointer to the pointer to move.
- * @return The moved pointer.
- */
-static inline void *move(void **old) {
-  void *newPtr = *old;
-  *old = NULL;
-  return newPtr;
-}
 
 /**
  * @brief Creates a new node using move semantics for the data.
