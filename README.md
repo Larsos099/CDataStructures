@@ -32,9 +32,11 @@ There you'll find an example of how to use the double linked list
 
 ## Header File Listing
 
-`linkedlist.h` → Singly Linked List
+[`linkedlist.h`](./linkedlist.h) → Singly Linked List
 
-`doublelinkedlist.h` → Double Linked List
+[`doublelinkedlist.h`](./doublelinkedlist.h) → Double Linked List
+
+[`circularlinkedlist.h`](./circularlinkedlist.h) → Double Linked List
 
 ## License
 This project is licensed under the GNU General Public License v3.0 (GPLv3) - see the [LICENSE](./LICENSE) file for details.
