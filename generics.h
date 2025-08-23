@@ -1,6 +1,8 @@
 #ifndef GENERICS_H
 #define GENERICS_H
 
+#include <stddef.h>
+
 /**
  * @struct Node
  * @brief Node structure for a singly linked list.
@@ -40,6 +42,5 @@ typedef struct DLNode {
   struct DLNode *next;
   struct DLNode *previous;
 } DLNode;
-
 
 #endif // GENERICS_H
