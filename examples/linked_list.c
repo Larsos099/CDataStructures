@@ -57,10 +57,14 @@ int main(void) {
 
     char *dataSev = strdup("Seventh");
     createdNode = sl_create_node_mv(&dataSev, 8, NULL);
-    sl_push_front_cp_node(&root, &createdNode);
+    sl_push_front_cp_node(&root, createdNode);
 
     char *dataEi = strdup("Eighth");
-    sl_push_front_cp_data(&root, &dataEi, 7);
+    sl_push_front_cp_data(&root, dataEi, 7);
+
+    char *dataNi = strdup("Ninth");
+    sl_push_front_cp_data_deep(&root, dataNi, 7);
+    free(dataNi); // data was copied
 
     print_list(root);
 
