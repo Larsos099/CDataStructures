@@ -439,12 +439,12 @@ static inline void sl_insert_at_index_cp_data(Node **rootPtrPtr, void *data,
 /**
  * @brief Inserts data at a specific index using deep copy.
  */
-static inline void sl_insert_at_index_deep_cp_data(Node **rootPtrPtr, void *data,
-                                                   size_t dataLen, int idx) {
+static inline void sl_insert_at_index_deep_cp_data(Node **rootPtrPtr,
+                                                   void *data, size_t dataLen,
+                                                   int idx) {
   Node *node = sl_create_node_deep_cp(data, dataLen, NULL);
   sl_insert_at_index_deep_cp_node(rootPtrPtr, node, idx);
 }
-
 
 /**
  * @brief Frees all nodes in the list.

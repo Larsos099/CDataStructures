@@ -1,7 +1,7 @@
 #ifndef DOUBLELINKEDLIST_H
 #define DOUBLELINKEDLIST_H
 
-#include <cstddef>
+#include <stddef.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -404,17 +404,17 @@ static inline DLNode *dl_get_by_index(DLNode *root, size_t index) {
   return current; // NULL if out of bounds
 }
 
-
 /**
  * @brief Inserts a node at the specified index using move semantics.
  * @param root Pointer to the root node of the list.
- * @param toBeInserted Pointer to the node pointer to be moved (ownership transferred).
+ * @param toBeInserted Pointer to the node pointer to be moved (ownership
+ * transferred).
  * @param idx Zero-based index where the node should be inserted.
  * @note If idx is out of bounds, the function does nothing.
  */
 
-static inline void dl_insert_at_index_mv_node(DLNode **root, DLNode **toBeInserted,
-                                           int idx) {
+static inline void dl_insert_at_index_mv_node(DLNode **root,
+                                              DLNode **toBeInserted, int idx) {
   if (!root || !*root || !toBeInserted || !*toBeInserted)
     return;
 
@@ -438,7 +438,6 @@ static inline void dl_insert_at_index_mv_node(DLNode **root, DLNode **toBeInsert
   nati->previous = newNode;
 }
 
-
 /**
  * @brief Inserts a node at the specified index using shallow copy.
  * @param root Pointer to the root node of the list.
@@ -447,7 +446,6 @@ static inline void dl_insert_at_index_mv_node(DLNode **root, DLNode **toBeInsert
  * @note Node is not copied; caller is responsible for data lifetime.
  * @note If idx is out of bounds, the function does nothing.
  */
-
 
 static inline void dl_insert_at_index_cp_node(DLNode **root,
                                               DLNode *toBeInserted, int idx) {
@@ -471,7 +469,6 @@ static inline void dl_insert_at_index_cp_node(DLNode **root,
   nati->previous->next = toBeInserted;
   nati->previous = toBeInserted;
 }
-
 
 /**
  * @brief Inserts a node at the specified index using deep copy of its data.
@@ -515,8 +512,9 @@ dl_insert_at_index_deep_cp_node(DLNode **root, DLNode *toBeCopied, int idx) {
  * @param idx Zero-based index where the data should be inserted.
  */
 
-static inline void dl_insert_at_index_mv_data(DLNode** root, void** data, size_t dataSize, int idx) {
-  DLNode* node = dl_create_node_mv(data, dataSize, NULL, NULL);
+static inline void dl_insert_at_index_mv_data(DLNode **root, void **data,
+                                              size_t dataSize, int idx) {
+  DLNode *node = dl_create_node_mv(data, dataSize, NULL, NULL);
   dl_insert_at_index_mv_node(root, &node, idx);
 }
 
@@ -529,8 +527,10 @@ static inline void dl_insert_at_index_mv_data(DLNode** root, void** data, size_t
  * @note Data is not copied; caller is responsible for data lifetime.
  */
 
-static inline void dl_insert_at_index_cp_data(DLNode** root, void* data, size_t dataSize, int idx) {
-  dl_insert_at_index_cp_node(root, dl_create_node_cp(data, dataSize, NULL, NULL), idx);
+static inline void dl_insert_at_index_cp_data(DLNode **root, void *data,
+                                              size_t dataSize, int idx) {
+  dl_insert_at_index_cp_node(
+      root, dl_create_node_cp(data, dataSize, NULL, NULL), idx);
 }
 
 /**
@@ -541,8 +541,10 @@ static inline void dl_insert_at_index_cp_data(DLNode** root, void* data, size_t 
  * @param idx Zero-based index where the data should be inserted.
  */
 
-static inline void dl_insert_at_index_deep_cp_data(DLNode** root, void* data, size_t dataSize, int idx) {
-  dl_insert_at_index_deep_cp_node(root, dl_create_node_deep_cp(data, dataSize, NULL, NULL), idx);
+static inline void dl_insert_at_index_deep_cp_data(DLNode **root, void *data,
+                                                   size_t dataSize, int idx) {
+  dl_insert_at_index_deep_cp_node(
+      root, dl_create_node_deep_cp(data, dataSize, NULL, NULL), idx);
 }
 
 /**
