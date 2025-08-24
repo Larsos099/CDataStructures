@@ -28,13 +28,13 @@ int main(void) {
 
     // testing functions that create a DLNode
     char *dataF = strdup("Second");
-    DLNode *root = dl_create_node_mv(&dataF, 7, NULL, NULL);
-    char *dataS = strdup("First");
-    dl_create_node_cp(dataS, 6, NULL ,root);
+    DLNode *root = dl_create_node_mv((void**)&dataF, 7, NULL, NULL);
+    char *dataS = strdup("First");  
+    dl_create_node_cp((void*)dataS, 6, NULL ,root);
     char *dataFo = strdup("Third");
-    root = dl_create_node_deep_cp(dataFo, 6, root, NULL);
+    root = dl_create_node_deep_cp((void*)dataFo, 6, root, NULL);
     dataFo = strdup("Fourth");
-    root = dl_create_node_deep_cp(dataFo, 7, root, NULL);
+    root = dl_create_node_deep_cp((void*)dataFo, 7, root, NULL);
     free(dataFo); // data was copied
     print_list(root);
 
@@ -45,21 +45,21 @@ int main(void) {
 
     // create a DLNode
     char *dataZ = strdup("Zero");
-    DLNode *createdNode = dl_create_node_mv(&dataZ, 5, NULL, NULL);
+    DLNode *createdNode = dl_create_node_mv((void**)&dataZ, 5, NULL, NULL);
     // add DLNode to end
     dl_push_back_mv_node(&root, &createdNode);
     char *dataMF = strdup("-First");
-    dl_push_back_mv_data(&root, &dataMF, 7);
+    dl_push_back_mv_data(&root, (void**)&dataMF, 7);
 
     char *dataMS = strdup("-Second");
-    createdNode = dl_create_node_mv(&dataMS, 8, NULL, NULL);
+    createdNode = dl_create_node_mv((void**)&dataMS, 8, NULL, NULL);
     dl_push_back_cp_node(&root, createdNode);
 
     char *dataMT = strdup("-Third");
-    dl_push_back_cp_data(&root, dataMT, 7);
+    dl_push_back_cp_data(&root, (void*)dataMT, 7);
 
     char *dataMFo = strdup("-Fourth");
-    dl_push_back_cp_data_deep(&root, dataMFo, 8);
+    dl_push_back_cp_data_deep(&root, (void*)dataMFo, 8);
     free(dataMFo); // data was copied
 
     print_list(root);
@@ -70,21 +70,21 @@ int main(void) {
     printf("---------------\n");
 
     char *dataFi = strdup("Fifth");
-    createdNode = dl_create_node_mv(&dataFi, 6, NULL, NULL);
+    createdNode = dl_create_node_mv((void**)&dataFi, 6, NULL, NULL);
     dl_push_front_mv_node(&root, &createdNode);
 
     char *dataSi = strdup("Sixth");
-    dl_push_front_mv_data(&root, &dataSi, 7);
+    dl_push_front_mv_data(&root, (void**)&dataSi, 7);
 
     char *dataSev = strdup("Seventh");
-    createdNode = dl_create_node_mv(&dataSev, 8, NULL, NULL);
+    createdNode = dl_create_node_mv((void**)&dataSev, 8, NULL, NULL);
     dl_push_front_cp_node(&root, createdNode);
 
     char *dataEi = strdup("Eighth");
-    dl_push_front_cp_data(&root, dataEi, 7);
+    dl_push_front_cp_data(&root, (void*)dataEi, 7);
 
     char *dataNi = strdup("Ninth");
-    dl_push_front_cp_data_deep(&root, dataNi, 7);
+    dl_push_front_cp_data_deep(&root, (void*)dataNi, 7);
     free(dataNi); // data was copied
 
     print_list(root);
@@ -118,25 +118,25 @@ int main(void) {
     printf("---------------\n");
     
     dataFo = strdup("Fourth");
-    DLNode *nodeToInsert = dl_create_node_deep_cp(dataFo, 7, NULL, NULL);
+    DLNode *nodeToInsert = dl_create_node_deep_cp((void*)dataFo, 7, NULL, NULL);
     dl_insert_at_index_mv_node(&root, &nodeToInsert, 4);
     dataFi = strdup("Fifth");
-    nodeToInsert = dl_create_node_deep_cp(dataFi, 6, NULL, NULL);
+    nodeToInsert = dl_create_node_deep_cp((void*)dataFi, 6, NULL, NULL);
     dl_insert_at_index_mv_node(&root, &nodeToInsert, 4);
     dataFi = strdup("Fifth.1");
-    nodeToInsert = dl_create_node_deep_cp(dataFi, 8, NULL, NULL);
+    nodeToInsert = dl_create_node_deep_cp((void*)dataFi, 8, NULL, NULL);
     dl_insert_at_index_cp_node(&root, nodeToInsert, 4);
     dataFi = strdup("Fifth.2");
-    nodeToInsert = dl_create_node_deep_cp(dataFi, 8, NULL, NULL);
+    nodeToInsert = dl_create_node_deep_cp((void*)dataFi, 8, NULL, NULL);
     dl_insert_at_index_deep_cp_node(&root, nodeToInsert, 4);
     free(nodeToInsert->data);
     free(nodeToInsert);
     dataFi = strdup("Fifth.3");
-    dl_insert_at_index_mv_data(&root, &dataFi, 8, 4);
+    dl_insert_at_index_mv_data(&root, (void**)&dataFi, 8, 4);
     dataFi = strdup("Fifth.4");
-    dl_insert_at_index_cp_data(&root, dataFi, 8, 4);
+    dl_insert_at_index_cp_data(&root, (void*)dataFi, 8, 4);
     dataFi = strdup("Fifth.5");
-    dl_insert_at_index_deep_cp_data(&root, dataFi, 8, 4);
+    dl_insert_at_index_deep_cp_data(&root, (void*)dataFi, 8, 4);
     free(dataFi);
 
     print_list(root);

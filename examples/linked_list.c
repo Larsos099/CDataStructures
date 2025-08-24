@@ -15,13 +15,13 @@ int main(void) {
 
   // testing functions that create a node
   char *dataF = strdup("First");
-  Node *root = sl_create_node_mv(&dataF, 6, NULL);
+  Node *root = sl_create_node_mv((void**)&dataF, 6, NULL);
   char *dataS = strdup("Second");
-  root = sl_create_node_deep_mv(&dataS, 7, &root);
+  root = sl_create_node_deep_mv((void**)&dataS, 7, &root);
   char *dataT = strdup("Third");
-  root = sl_create_node_cp(dataT, 6, root);
+  root = sl_create_node_cp((void*)dataT, 6, root);
   char *dataFo = strdup("Fourth");
-  root = sl_create_node_deep_cp(dataFo, 7, root);
+  root = sl_create_node_deep_cp((void*)dataFo, 7, root);
   free(dataFo); // data was copied
   print_list(root);
 
@@ -32,21 +32,21 @@ int main(void) {
 
   // create a node
   char *dataZ = strdup("Zero");
-  Node *createdNode = sl_create_node_mv(&dataZ, 5, NULL);
+  Node *createdNode = sl_create_node_mv((void**)&dataZ, 5, NULL);
   // add node to end
   sl_push_back_mv_node(&root, &createdNode);
   char *dataMF = strdup("-First");
-  sl_push_back_mv_data(&root, &dataMF, 7);
+  sl_push_back_mv_data(&root, (void**)&dataMF, 7);
 
   char *dataMS = strdup("-Second");
-  createdNode = sl_create_node_mv(&dataMS, 8, NULL);
+  createdNode = sl_create_node_mv((void**)&dataMS, 8, NULL);
   sl_push_back_cp_node(&root, createdNode);
 
   char *dataMT = strdup("-Third");
-  sl_push_back_cp_data(&root, dataMT, 7);
+  sl_push_back_cp_data(&root, (void*)dataMT, 7);
 
   char *dataMFo = strdup("-Fourth");
-  sl_push_back_cp_data_deep(&root, dataMFo, 8);
+  sl_push_back_cp_data_deep(&root, (void*)dataMFo, 8);
   free(dataMFo); // data was copied
 
   print_list(root);
@@ -57,21 +57,21 @@ int main(void) {
   printf("---------------\n");
 
   char *dataFi = strdup("Fifth");
-  createdNode = sl_create_node_mv(&dataFi, 6, NULL);
+  createdNode = sl_create_node_mv((void**)&dataFi, 6, NULL);
   sl_push_front_mv_node(&root, &createdNode);
 
   char *dataSi = strdup("Sixth");
-  sl_push_front_mv_data(&root, &dataSi, 7);
+  sl_push_front_mv_data(&root, (void**)&dataSi, 7);
 
   char *dataSev = strdup("Seventh");
-  createdNode = sl_create_node_mv(&dataSev, 8, NULL);
+  createdNode = sl_create_node_mv((void**)&dataSev, 8, NULL);
   sl_push_front_cp_node(&root, createdNode);
 
   char *dataEi = strdup("Eighth");
-  sl_push_front_cp_data(&root, dataEi, 7);
+  sl_push_front_cp_data(&root, (void*)dataEi, 7);
 
   char *dataNi = strdup("Ninth");
-  sl_push_front_cp_data_deep(&root, dataNi, 7);
+  sl_push_front_cp_data_deep(&root, (void*)dataNi, 7);
   free(dataNi); // data was copied
 
   print_list(root);
@@ -105,7 +105,7 @@ int main(void) {
   printf("---------------\n");
 
   dataFo = strdup("Fourth");
-  Node *nodeToInsert = sl_create_node_deep_cp(dataFo, 7, NULL);
+  Node *nodeToInsert = sl_create_node_deep_cp((void*)dataFo, 7, NULL);
   sl_insert_at_index_mv_node(&root, &nodeToInsert, 4);
   dataFi = strdup("Fifth");
   nodeToInsert = sl_create_node_deep_cp(dataFi, 6, NULL);
@@ -119,11 +119,11 @@ int main(void) {
   free(nodeToInsert->data);
   free(nodeToInsert);
   dataFi = strdup("Fifth.3");
-  sl_insert_at_index_mv_data(&root, &dataFi, 8, 4);
+  sl_insert_at_index_mv_data(&root, (void**)&dataFi, 8, 4);
   dataFi = strdup("Fifth.4");
-  sl_insert_at_index_cp_data(&root, dataFi, 8, 4);
+  sl_insert_at_index_cp_data(&root, (void*)dataFi, 8, 4);
   dataFi = strdup("Fifth.5");
-  sl_insert_at_index_deep_cp_data(&root, dataFi, 8, 4);
+  sl_insert_at_index_deep_cp_data(&root, (void*)dataFi, 8, 4);
   free(dataFi);
   print_list(root);
   sl_free_list(&root);
