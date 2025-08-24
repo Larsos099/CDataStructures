@@ -6,15 +6,13 @@
 /**
  * @struct Node
  * @brief Node structure for a singly linked list.
- * @var data Pointer to the stored data.
- * @var dataLen Size of the data in bytes.
- * @var next Pointer to the next node.
  */
 typedef struct Node {
-  void *data;
-  size_t dataLen;
-  struct Node *next;
+    void *data;        /**< Pointer to the stored data */
+    size_t dataLen;    /**< Size of the data in bytes */
+    struct Node *next; /**< Pointer to the next node */
 } Node;
+
 
 /**
  * @brief Moves a pointer and sets the old pointer to NULL (simulates std::move
@@ -31,16 +29,12 @@ static inline void *move(void **old) {
 /**
  * @struct DLNode
  * @brief Node for a doubly linked list.
- * @var data Pointer to stored data.
- * @var dataSize Size of the data in bytes.
- * @var next Pointer to the next node.
- * @var previous Pointer to the previous node.
  */
 typedef struct DLNode {
-  void *data;
-  size_t dataSize;
-  struct DLNode *next;
-  struct DLNode *previous;
+    void *data;            /**< Pointer to stored data */
+    size_t dataSize;       /**< Size of the data in bytes */
+    struct DLNode *next;     /**< Pointer to the next node */
+    struct DLNode *previous; /**< Pointer to the previous node */
 } DLNode;
 
 #endif // GENERICS_H

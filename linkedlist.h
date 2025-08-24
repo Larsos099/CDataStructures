@@ -244,6 +244,7 @@ static inline void *sl_get_at_index(Node *rootPtr, int idx) {
  * @brief Returns the first node containing the specified value.
  * @param rootPtr Root node pointer.
  * @param _val Pointer to the value to search for.
+ * @param valueLen Size of the data as bytes in size_t (long long)
  * @return Pointer to node or NULL if value not found.
  */
 static inline Node *sl_get_by_value(Node *rootPtr, void *_val, size_t valueLen) {
