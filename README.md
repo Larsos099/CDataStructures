@@ -34,7 +34,7 @@ There you'll find an example of how to use the double linked list
 
 ## Documentation
 
-There is Doxygen generated documentation for this repo [here](./html/index.html).
+There is Doxygen generated documentation for this repo [here](https://larsos099.github.io/CDataStructures/).
 
 
 ## License
