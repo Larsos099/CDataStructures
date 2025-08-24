@@ -2,8 +2,7 @@
 #define CIRCULARLINKEDLIST_H
 
 #include "generics.h"
-#include <cstring>
-#include <iterator>
+#include <string.h>
 #include <stddef.h>
 #include <stdlib.h>
 
