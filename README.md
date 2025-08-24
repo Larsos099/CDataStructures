@@ -30,13 +30,12 @@ For instance, if you want to use a Doubly Linked List:
 
 There you'll find an example of how to use the double linked list
 
-## Header File Listing
+---
 
-[`linkedlist.h`](./linkedlist.h) → Singly Linked List
+## Documentation
 
-[`doublelinkedlist.h`](./doublelinkedlist.h) → Double Linked List
+There is Doxygen generated documentation for this repo [here](./html/index.html).
 
-[`circularlinkedlist.h`](./circularlinkedlist.h) → Circular Linked List
 
 ## License
 This project is licensed under the GNU General Public License v3.0 (GPLv3) - see the [LICENSE](./LICENSE) file for details.
