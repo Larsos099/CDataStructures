@@ -106,8 +106,8 @@ Include dependency graph for fifo.h:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5705af35b6aad135d90a38998fa912d1" id="r_a5705af35b6aad135d90a38998fa912d1"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a5705af35b6aad135d90a38998fa912d1">fifo_enqueue_node</a> (<a class="el" href="structfifo__queue.html">fifo_queue</a> *queue, struct <a class="el" href="structqn.html">qn</a> **node)</td></tr>
-<tr class="memdesc:a5705af35b6aad135d90a38998fa912d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues an existing node at the back of the FIFO queue.  <br /></td></tr>
+<tr class="memitem:aa9dff4660510d0570a401851cb40ff66" id="r_aa9dff4660510d0570a401851cb40ff66"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#aa9dff4660510d0570a401851cb40ff66">fifo_enqueue_node</a> (<a class="el" href="structfifo__queue.html">fifo_queue</a> *queue, <a class="el" href="structQNode.html">QNode</a> **node)</td></tr>
+<tr class="memdesc:aa9dff4660510d0570a401851cb40ff66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues an existing node at the back of the FIFO queue.  <br /></td></tr>
 <tr class="memitem:acd4df5df97b86deb1b1c07f17ff3a2a5" id="r_acd4df5df97b86deb1b1c07f17ff3a2a5"><td class="memItemLeft">static <a class="el" href="structQNode.html">QNode</a> *&#160;</td><td class="memItemRight"><a class="el" href="#acd4df5df97b86deb1b1c07f17ff3a2a5">fifo_dequeue</a> (<a class="el" href="structfifo__queue.html">fifo_queue</a> *queue)</td></tr>
 <tr class="memdesc:acd4df5df97b86deb1b1c07f17ff3a2a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dequeues a node from the front of the FIFO queue.  <br /></td></tr>
 <tr class="memitem:ac1793c75edffbfa335e0457f865ead53" id="r_ac1793c75edffbfa335e0457f865ead53"><td class="memItemLeft">static <a class="el" href="structfifo__queue.html">fifo_queue</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ac1793c75edffbfa335e0457f865ead53">create_fifo</a> ()</td></tr>
@@ -156,12 +156,15 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   50</span>                                        {</div>
 <div class="line"><span class="lineno">   51</span>    <a class="code hl_struct" href="structfifo__queue.html">fifo_queue</a> *n = (<a class="code hl_struct" href="structfifo__queue.html">fifo_queue</a>*)malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structfifo__queue.html">fifo_queue</a>));</div>
 <div class="line"><span class="lineno">   52</span>    <span class="keywordflow">if</span>(!n) <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><span class="lineno">   53</span>    n-&gt;back = NULL;</div>
-<div class="line"><span class="lineno">   54</span>    n-&gt;root = NULL;</div>
-<div class="line"><span class="lineno">   55</span>    n-&gt;len = 0;</div>
+<div class="line"><span class="lineno">   53</span>    n-&gt;<a class="code hl_variable" href="structfifo__queue.html#a2f0332e97c05a6eecf7f77fa2cf64867">back</a> = NULL;</div>
+<div class="line"><span class="lineno">   54</span>    n-&gt;<a class="code hl_variable" href="structfifo__queue.html#ae1ad574da2e6a1eee01fae0a666ef7ca">root</a> = NULL;</div>
+<div class="line"><span class="lineno">   55</span>    n-&gt;<a class="code hl_variable" href="structfifo__queue.html#a7b6bf0a512e590192671ed82f9faec81">len</a> = 0;</div>
 <div class="line"><span class="lineno">   56</span>    <span class="keywordflow">return</span> n;</div>
 <div class="line"><span class="lineno">   57</span>}</div>
-<div class="ttc" id="astructfifo__queue_html"><div class="ttname"><a href="structfifo__queue.html">fifo_queue</a></div><div class="ttdoc">Cointainer &amp; Header Struct for a FIFO Queue.</div></div>
+<div class="ttc" id="astructfifo__queue_html"><div class="ttname"><a href="structfifo__queue.html">fifo_queue</a></div><div class="ttdoc">Cointainer &amp; Header Struct for a FIFO Queue.</div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00058">generics.h:58</a></div></div>
+<div class="ttc" id="astructfifo__queue_html_a2f0332e97c05a6eecf7f77fa2cf64867"><div class="ttname"><a href="structfifo__queue.html#a2f0332e97c05a6eecf7f77fa2cf64867">fifo_queue::back</a></div><div class="ttdeci">struct QNode * back</div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00060">generics.h:60</a></div></div>
+<div class="ttc" id="astructfifo__queue_html_a7b6bf0a512e590192671ed82f9faec81"><div class="ttname"><a href="structfifo__queue.html#a7b6bf0a512e590192671ed82f9faec81">fifo_queue::len</a></div><div class="ttdeci">size_t len</div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00061">generics.h:61</a></div></div>
+<div class="ttc" id="astructfifo__queue_html_ae1ad574da2e6a1eee01fae0a666ef7ca"><div class="ttname"><a href="structfifo__queue.html#ae1ad574da2e6a1eee01fae0a666ef7ca">fifo_queue::root</a></div><div class="ttdeci">struct QNode * root</div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00059">generics.h:59</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -199,18 +202,19 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8h_source.html#l00034">34</a> of file <a class="el" href="fifo_8h_source.html">fifo.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   34</span>                                                     {</div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">if</span>(!queue-&gt;root) <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><span class="lineno">   36</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* oldRoot = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)<a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>((<span class="keywordtype">void</span>**)(&amp;(queue-&gt;root)));</div>
-<div class="line"><span class="lineno">   37</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* newRoot = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)<a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>((<span class="keywordtype">void</span>**)&amp;(oldRoot-&gt;next));</div>
-<div class="line"><span class="lineno">   38</span>    queue-&gt;root = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)<a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>((<span class="keywordtype">void</span>**)&amp;newRoot);</div>
-<div class="line"><span class="lineno">   39</span>    queue-&gt;len -= 1;</div>
-<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">if</span>(queue-&gt;len == 1 || queue-&gt;len == 0) {</div>
-<div class="line"><span class="lineno">   41</span>        queue-&gt;back = queue-&gt;root;</div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">if</span>(!queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#ae1ad574da2e6a1eee01fae0a666ef7ca">root</a>) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><span class="lineno">   36</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* oldRoot = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)<a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>((<span class="keywordtype">void</span>**)(&amp;(queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#ae1ad574da2e6a1eee01fae0a666ef7ca">root</a>)));</div>
+<div class="line"><span class="lineno">   37</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* newRoot = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)<a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>((<span class="keywordtype">void</span>**)&amp;(oldRoot-&gt;<a class="code hl_variable" href="structQNode.html#a3b7155192216d5b7983b0751dfa487c0">next</a>));</div>
+<div class="line"><span class="lineno">   38</span>    queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#ae1ad574da2e6a1eee01fae0a666ef7ca">root</a> = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)<a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>((<span class="keywordtype">void</span>**)&amp;newRoot);</div>
+<div class="line"><span class="lineno">   39</span>    queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#a7b6bf0a512e590192671ed82f9faec81">len</a> -= 1;</div>
+<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">if</span>(queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#a7b6bf0a512e590192671ed82f9faec81">len</a> == 1 || queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#a7b6bf0a512e590192671ed82f9faec81">len</a> == 0) {</div>
+<div class="line"><span class="lineno">   41</span>        queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#a2f0332e97c05a6eecf7f77fa2cf64867">back</a> = queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#ae1ad574da2e6a1eee01fae0a666ef7ca">root</a>;</div>
 <div class="line"><span class="lineno">   42</span>    }</div>
 <div class="line"><span class="lineno">   43</span>    <span class="keywordflow">return</span> oldRoot;</div>
 <div class="line"><span class="lineno">   44</span>}</div>
 <div class="ttc" id="agenerics_8h_html_a85c846e36ae0726577340e629e789430"><div class="ttname"><a href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a></div><div class="ttdeci">static void * move(void **old)</div><div class="ttdoc">Moves a pointer and sets the old pointer to NULL (simulates std::move in C++).</div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00024">generics.h:24</a></div></div>
-<div class="ttc" id="astructQNode_html"><div class="ttname"><a href="structQNode.html">QNode</a></div><div class="ttdoc">Node for a Queue.</div></div>
+<div class="ttc" id="astructQNode_html"><div class="ttname"><a href="structQNode.html">QNode</a></div><div class="ttdoc">Node for a Queue.</div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00047">generics.h:47</a></div></div>
+<div class="ttc" id="astructQNode_html_a3b7155192216d5b7983b0751dfa487c0"><div class="ttname"><a href="structQNode.html#a3b7155192216d5b7983b0751dfa487c0">QNode::next</a></div><div class="ttdeci">struct QNode * next</div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00049">generics.h:49</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -259,10 +263,10 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="fifo_8h_source.html#l00131">131</a> of file <a class="el" href="fifo_8h_source.html">fifo.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  131</span>                                                                                          {</div>
 <div class="line"><span class="lineno">  132</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* n = <a class="code hl_function" href="#a472ed1710fd35fda0c37af4617e146a1">qnode_create_copy</a>(data, dataSize);</div>
-<div class="line"><span class="lineno">  133</span>    <a class="code hl_function" href="#a5705af35b6aad135d90a38998fa912d1">fifo_enqueue_node</a>(queue, &amp;n);</div>
+<div class="line"><span class="lineno">  133</span>    <a class="code hl_function" href="#aa9dff4660510d0570a401851cb40ff66">fifo_enqueue_node</a>(queue, &amp;n);</div>
 <div class="line"><span class="lineno">  134</span>}</div>
 <div class="ttc" id="afifo_8h_html_a472ed1710fd35fda0c37af4617e146a1"><div class="ttname"><a href="#a472ed1710fd35fda0c37af4617e146a1">qnode_create_copy</a></div><div class="ttdeci">static QNode * qnode_create_copy(void *data, size_t dataSize)</div><div class="ttdoc">Creates a new queue node with a deep copy of the data.</div><div class="ttdef"><b>Definition</b> <a href="fifo_8h_source.html#l00094">fifo.h:94</a></div></div>
-<div class="ttc" id="afifo_8h_html_a5705af35b6aad135d90a38998fa912d1"><div class="ttname"><a href="#a5705af35b6aad135d90a38998fa912d1">fifo_enqueue_node</a></div><div class="ttdeci">static void fifo_enqueue_node(fifo_queue *queue, struct qn **node)</div><div class="ttdoc">Enqueues an existing node at the back of the FIFO queue.</div><div class="ttdef"><b>Definition</b> <a href="fifo_8h_source.html#l00015">fifo.h:15</a></div></div>
+<div class="ttc" id="afifo_8h_html_aa9dff4660510d0570a401851cb40ff66"><div class="ttname"><a href="#aa9dff4660510d0570a401851cb40ff66">fifo_enqueue_node</a></div><div class="ttdeci">static void fifo_enqueue_node(fifo_queue *queue, QNode **node)</div><div class="ttdoc">Enqueues an existing node at the back of the FIFO queue.</div><div class="ttdef"><b>Definition</b> <a href="fifo_8h_source.html#l00015">fifo.h:15</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -311,7 +315,7 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="fifo_8h_source.html#l00109">109</a> of file <a class="el" href="fifo_8h_source.html">fifo.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  109</span>                                                                                           {</div>
 <div class="line"><span class="lineno">  110</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* n = <a class="code hl_function" href="#a22d6aad128daf740573a2eec28eabf25">qnode_create_move</a>(data, dataSize);</div>
-<div class="line"><span class="lineno">  111</span>    <a class="code hl_function" href="#a5705af35b6aad135d90a38998fa912d1">fifo_enqueue_node</a>(queue, &amp;n);</div>
+<div class="line"><span class="lineno">  111</span>    <a class="code hl_function" href="#aa9dff4660510d0570a401851cb40ff66">fifo_enqueue_node</a>(queue, &amp;n);</div>
 <div class="line"><span class="lineno">  112</span>}</div>
 <div class="ttc" id="afifo_8h_html_a22d6aad128daf740573a2eec28eabf25"><div class="ttname"><a href="#a22d6aad128daf740573a2eec28eabf25">qnode_create_move</a></div><div class="ttdeci">static QNode * qnode_create_move(void **data, size_t dataSize)</div><div class="ttdoc">Creates a new queue node using move semantics for the data.</div><div class="ttdef"><b>Definition</b> <a href="fifo_8h_source.html#l00065">fifo.h:65</a></div></div>
 </div><!-- fragment -->
@@ -362,14 +366,14 @@ Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="fifo_8h_source.html#l00120">120</a> of file <a class="el" href="fifo_8h_source.html">fifo.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  120</span>                                                                                             {</div>
 <div class="line"><span class="lineno">  121</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* n = <a class="code hl_function" href="#ae9a2c7cfb7690992fcf5f98d7bae58ba">qnode_create_shallow</a>(data, dataSize);</div>
-<div class="line"><span class="lineno">  122</span>    <a class="code hl_function" href="#a5705af35b6aad135d90a38998fa912d1">fifo_enqueue_node</a>(queue, &amp;n);</div>
+<div class="line"><span class="lineno">  122</span>    <a class="code hl_function" href="#aa9dff4660510d0570a401851cb40ff66">fifo_enqueue_node</a>(queue, &amp;n);</div>
 <div class="line"><span class="lineno">  123</span>}</div>
 <div class="ttc" id="afifo_8h_html_ae9a2c7cfb7690992fcf5f98d7bae58ba"><div class="ttname"><a href="#ae9a2c7cfb7690992fcf5f98d7bae58ba">qnode_create_shallow</a></div><div class="ttdeci">static QNode * qnode_create_shallow(void *data, size_t dataSize)</div><div class="ttdoc">Creates a new queue node using shallow copy of data (pointer not copied).</div><div class="ttdef"><b>Definition</b> <a href="fifo_8h_source.html#l00080">fifo.h:80</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a5705af35b6aad135d90a38998fa912d1" name="a5705af35b6aad135d90a38998fa912d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5705af35b6aad135d90a38998fa912d1">&#9670;&#160;</a></span>fifo_enqueue_node()</h2>
+<a id="aa9dff4660510d0570a401851cb40ff66" name="aa9dff4660510d0570a401851cb40ff66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9dff4660510d0570a401851cb40ff66">&#9670;&#160;</a></span>fifo_enqueue_node()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -385,7 +389,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct <a class="el" href="structqn.html">qn</a> **</td>          <td class="paramname"><span class="paramname"><em>node</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structQNode.html">QNode</a> **</td>          <td class="paramname"><span class="paramname"><em>node</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -405,21 +409,19 @@ Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="fifo_8h_source.html#l00015">15</a> of file <a class="el" href="fifo_8h_source.html">fifo.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>                                                                          {</div>
-<div class="line"><span class="lineno">   16</span>    <span class="keyword">struct </span><a class="code hl_struct" href="structqn.html">qn</a>* oldBack = queue-&gt;back;</div>
-<div class="line"><span class="lineno">   17</span>    (*node)-&gt;next = NULL;</div>
-<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">if</span>(!queue-&gt;root) {</div>
-<div class="line"><span class="lineno">   19</span>        queue-&gt;root = (<span class="keyword">struct </span><a class="code hl_struct" href="structqn.html">qn</a>*)<a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>((<span class="keywordtype">void</span>**)node);</div>
-<div class="line"><span class="lineno">   20</span>        queue-&gt;back = queue-&gt;root;</div>
+<div class="fragment"><div class="line"><span class="lineno">   15</span>                                                                      {</div>
+<div class="line"><span class="lineno">   16</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* oldBack = queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#a2f0332e97c05a6eecf7f77fa2cf64867">back</a>;</div>
+<div class="line"><span class="lineno">   17</span>    (*node)-&gt;<a class="code hl_variable" href="structQNode.html#a3b7155192216d5b7983b0751dfa487c0">next</a> = NULL;</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">if</span>(!queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#ae1ad574da2e6a1eee01fae0a666ef7ca">root</a>) {</div>
+<div class="line"><span class="lineno">   19</span>        queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#ae1ad574da2e6a1eee01fae0a666ef7ca">root</a> = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)<a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>((<span class="keywordtype">void</span>**)node);</div>
+<div class="line"><span class="lineno">   20</span>        queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#a2f0332e97c05a6eecf7f77fa2cf64867">back</a> = queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#ae1ad574da2e6a1eee01fae0a666ef7ca">root</a>;</div>
 <div class="line"><span class="lineno">   21</span>    }</div>
 <div class="line"><span class="lineno">   22</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   23</span>        queue-&gt;back = (<span class="keyword">struct </span><a class="code hl_struct" href="structqn.html">qn</a>*)<a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>((<span class="keywordtype">void</span>**)node);</div>
-<div class="line"><span class="lineno">   24</span>        oldBack-&gt;<a class="code hl_variable" href="structqn.html#aedad088bd4b134d8a06fb6a0472b5a95">next</a> = queue-&gt;back;</div>
+<div class="line"><span class="lineno">   23</span>        queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#a2f0332e97c05a6eecf7f77fa2cf64867">back</a> = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)<a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>((<span class="keywordtype">void</span>**)node);</div>
+<div class="line"><span class="lineno">   24</span>        oldBack-&gt;<a class="code hl_variable" href="structQNode.html#a3b7155192216d5b7983b0751dfa487c0">next</a> = queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#a2f0332e97c05a6eecf7f77fa2cf64867">back</a>;</div>
 <div class="line"><span class="lineno">   25</span>    }</div>
-<div class="line"><span class="lineno">   26</span>    queue-&gt;len += 1;</div>
+<div class="line"><span class="lineno">   26</span>    queue-&gt;<a class="code hl_variable" href="structfifo__queue.html#a7b6bf0a512e590192671ed82f9faec81">len</a> += 1;</div>
 <div class="line"><span class="lineno">   27</span>}</div>
-<div class="ttc" id="astructqn_html"><div class="ttname"><a href="structqn.html">qn</a></div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00047">generics.h:47</a></div></div>
-<div class="ttc" id="astructqn_html_aedad088bd4b134d8a06fb6a0472b5a95"><div class="ttname"><a href="structqn.html#aedad088bd4b134d8a06fb6a0472b5a95">qn::next</a></div><div class="ttdeci">struct qn * next</div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00049">generics.h:49</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -464,11 +466,13 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   94</span>                                                                    {</div>
 <div class="line"><span class="lineno">   95</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* n = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)calloc(1, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structQNode.html">QNode</a>));</div>
 <div class="line"><span class="lineno">   96</span>    <span class="keywordflow">if</span>(!n) <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><span class="lineno">   97</span>    n-&gt;data = calloc(1, dataSize);</div>
-<div class="line"><span class="lineno">   98</span>    memmove(n-&gt;data, data, dataSize);</div>
-<div class="line"><span class="lineno">   99</span>    n-&gt;dataSize = dataSize;</div>
+<div class="line"><span class="lineno">   97</span>    n-&gt;<a class="code hl_variable" href="structQNode.html#a51a4529d404ff2cdac8f9e5c51417518">data</a> = calloc(1, dataSize);</div>
+<div class="line"><span class="lineno">   98</span>    memmove(n-&gt;<a class="code hl_variable" href="structQNode.html#a51a4529d404ff2cdac8f9e5c51417518">data</a>, data, dataSize);</div>
+<div class="line"><span class="lineno">   99</span>    n-&gt;<a class="code hl_variable" href="structQNode.html#a8d0fd55659ff023b42856f44b7b3648c">dataSize</a> = dataSize;</div>
 <div class="line"><span class="lineno">  100</span>    <span class="keywordflow">return</span> n;</div>
 <div class="line"><span class="lineno">  101</span>}</div>
+<div class="ttc" id="astructQNode_html_a51a4529d404ff2cdac8f9e5c51417518"><div class="ttname"><a href="structQNode.html#a51a4529d404ff2cdac8f9e5c51417518">QNode::data</a></div><div class="ttdeci">void * data</div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00048">generics.h:48</a></div></div>
+<div class="ttc" id="astructQNode_html_a8d0fd55659ff023b42856f44b7b3648c"><div class="ttname"><a href="structQNode.html#a8d0fd55659ff023b42856f44b7b3648c">QNode::dataSize</a></div><div class="ttdeci">size_t dataSize</div><div class="ttdef"><b>Definition</b> <a href="generics_8h_source.html#l00050">generics.h:50</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -513,8 +517,8 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   65</span>                                                                     {</div>
 <div class="line"><span class="lineno">   66</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* n = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)calloc(1, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structQNode.html">QNode</a>));</div>
 <div class="line"><span class="lineno">   67</span>    <span class="keywordflow">if</span>(!n) <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><span class="lineno">   68</span>    n-&gt;data = <a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>(data);</div>
-<div class="line"><span class="lineno">   69</span>    n-&gt;dataSize = dataSize;</div>
+<div class="line"><span class="lineno">   68</span>    n-&gt;<a class="code hl_variable" href="structQNode.html#a51a4529d404ff2cdac8f9e5c51417518">data</a> = <a class="code hl_function" href="generics_8h.html#a85c846e36ae0726577340e629e789430">move</a>(data);</div>
+<div class="line"><span class="lineno">   69</span>    n-&gt;<a class="code hl_variable" href="structQNode.html#a8d0fd55659ff023b42856f44b7b3648c">dataSize</a> = dataSize;</div>
 <div class="line"><span class="lineno">   70</span>    <span class="keywordflow">return</span> n;</div>
 <div class="line"><span class="lineno">   71</span>}</div>
 </div><!-- fragment -->
@@ -562,8 +566,8 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   80</span>                                                                       {</div>
 <div class="line"><span class="lineno">   81</span>    <a class="code hl_struct" href="structQNode.html">QNode</a>* n = (<a class="code hl_struct" href="structQNode.html">QNode</a>*)calloc(1, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="structQNode.html">QNode</a>));</div>
 <div class="line"><span class="lineno">   82</span>    <span class="keywordflow">if</span>(!n) <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><span class="lineno">   83</span>    n-&gt;data = data;</div>
-<div class="line"><span class="lineno">   84</span>    n-&gt;dataSize = dataSize;</div>
+<div class="line"><span class="lineno">   83</span>    n-&gt;<a class="code hl_variable" href="structQNode.html#a51a4529d404ff2cdac8f9e5c51417518">data</a> = data;</div>
+<div class="line"><span class="lineno">   84</span>    n-&gt;<a class="code hl_variable" href="structQNode.html#a8d0fd55659ff023b42856f44b7b3648c">dataSize</a> = dataSize;</div>
 <div class="line"><span class="lineno">   85</span>    <span class="keywordflow">return</span> n;</div>
 <div class="line"><span class="lineno">   86</span>}</div>
 </div><!-- fragment -->

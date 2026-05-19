@@ -44,9 +44,9 @@ typedef struct DLNode {
  * @struct QNode
  * @brief Node for a Queue.
  */
-typedef struct qn {
+typedef struct QNode {
     void* data;         /**< Pointer to stored data */
-    struct qn* next;    /**< Pointer to the next Node */
+    struct QNode* next;    /**< Pointer to the next Node */
     size_t dataSize;    /**< Size of the data in bytes */
 } QNode;
 
@@ -55,9 +55,9 @@ typedef struct qn {
  * @struct fifo_queue
  * @brief Cointainer & Header Struct for a FIFO Queue
  */
-typedef struct fq {
-    struct qn *root;    /**< Pointer to first QNode */
-    struct qn *back;    /**< Pointer to last QNode */
+typedef struct fifo_queue {
+    struct QNode *root;    /**< Pointer to first QNode */
+    struct QNode *back;    /**< Pointer to last QNode */
     size_t len;         /**< Size of FIFO Queue */
 } fifo_queue;
 

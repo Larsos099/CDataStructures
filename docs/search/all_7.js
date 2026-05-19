@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['next_0',['next',['../structNode.html#af67b110ca1a258b793bf69d306929b22',1,'Node::next'],['../structDLNode.html#a7f2678588158830e4bca250313c93782',1,'DLNode::next'],['../structqn.html#aedad088bd4b134d8a06fb6a0472b5a95',1,'qn::next']]],
+  ['next_0',['next',['../structNode.html#af67b110ca1a258b793bf69d306929b22',1,'Node::next'],['../structDLNode.html#a7f2678588158830e4bca250313c93782',1,'DLNode::next'],['../structQNode.html#a3b7155192216d5b7983b0751dfa487c0',1,'QNode::next']]],
   ['node_1',['Node',['../structNode.html',1,'Node'],['../generics_8h.html#a3b09f37e675bcd48a01bf22155996872',1,'Node:&#160;generics.h']]]
 ];

@@ -12,15 +12,15 @@
  * @param queue Pointer to the FIFO queue.
  * @param node Pointer to pointer to the node to enqueue (ownership transferred).
  */
-static inline void fifo_enqueue_node(fifo_queue* queue, struct qn** node) {
-    struct qn* oldBack = queue->back;
+static inline void fifo_enqueue_node(fifo_queue* queue, QNode** node) {
+    QNode* oldBack = queue->back;
     (*node)->next = NULL;
     if(!queue->root) {
-        queue->root = (struct qn*)move((void**)node);
+        queue->root = (QNode*)move((void**)node);
         queue->back = queue->root;
     }
     else {
-        queue->back = (struct qn*)move((void**)node);
+        queue->back = (QNode*)move((void**)node);
         oldBack->next = queue->back;
     }
     queue->len += 1;

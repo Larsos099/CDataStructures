@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['data_0',['data',['../structNode.html#a38b733496e3eff5e0b4fcb11cd9b866a',1,'Node::data'],['../structDLNode.html#adbd9636c066482dc11031f1a325a0e0d',1,'DLNode::data'],['../structqn.html#af3a041d7f546690818f65c49aa6273df',1,'qn::data']]],
+  ['data_0',['data',['../structNode.html#a38b733496e3eff5e0b4fcb11cd9b866a',1,'Node::data'],['../structDLNode.html#adbd9636c066482dc11031f1a325a0e0d',1,'DLNode::data'],['../structQNode.html#a51a4529d404ff2cdac8f9e5c51417518',1,'QNode::data']]],
   ['datalen_1',['dataLen',['../structNode.html#a482f5fcf33db3c5855c9c3ae0ed0ab50',1,'Node']]],
-  ['datasize_2',['dataSize',['../structDLNode.html#ae6b8b6185bcccd7e518c5d03ca97846e',1,'DLNode::dataSize'],['../structqn.html#ace3a0c33096ad4f939f34cbee349d26e',1,'qn::dataSize']]],
+  ['datasize_2',['dataSize',['../structDLNode.html#ae6b8b6185bcccd7e518c5d03ca97846e',1,'DLNode::dataSize'],['../structQNode.html#a8d0fd55659ff023b42856f44b7b3648c',1,'QNode::dataSize']]],
   ['dl_5fcontains_3',['dl_contains',['../doublelinkedlist_8h.html#aaf3270b352dcf8d3ca1107fc3895d0e4',1,'doublelinkedlist.h']]],
   ['dl_5fcreate_5fnode_5fcp_4',['dl_create_node_cp',['../doublelinkedlist_8h.html#a51fed3eda9dc067ffdaa56c7e18760d3',1,'doublelinkedlist.h']]],
   ['dl_5fcreate_5fnode_5fdeep_5fcp_5',['dl_create_node_deep_cp',['../doublelinkedlist_8h.html#a5a45aee06ba4ff74d4c701947f09f717',1,'doublelinkedlist.h']]],
