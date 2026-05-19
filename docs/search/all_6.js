@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['previous_0',['previous',['../structDLNode.html#a82d6e92ec44281471d866a6f25dc9bcf',1,'DLNode']]]
+  ['move_0',['move',['../generics_8h.html#a85c846e36ae0726577340e629e789430',1,'generics.h']]]
 ];
