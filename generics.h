@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 
+
 /**
  * @struct Node
  * @brief Node structure for a singly linked list.
@@ -36,5 +37,28 @@ typedef struct DLNode {
     struct DLNode *next;     /**< Pointer to the next node */
     struct DLNode *previous; /**< Pointer to the previous node */
 } DLNode;
+
+
+
+/**
+ * @struct QNode
+ * @brief Node for a Queue.
+ */
+typedef struct qn {
+    void* data;         /**< Pointer to stored data */
+    struct qn* next;    /**< Pointer to the next Node */
+    size_t dataSize;    /**< Size of the data in bytes */
+} QNode;
+
+
+/**
+ * @struct fifo_queue
+ * @brief Cointainer & Header Struct for a FIFO Queue
+ */
+typedef struct fq {
+    struct qn *root;    /**< Pointer to first QNode */
+    struct qn *back;    /**< Pointer to last QNode */
+    size_t len;         /**< Size of FIFO Queue */
+} fifo_queue;
 
 #endif // GENERICS_H
